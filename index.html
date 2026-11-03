@@ -1,12 +1,350 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Arman's Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARMAN | Personal Portfolio</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg: #080808;
+  --card: #151515;
+  --text: #ffffff;
+  --muted: #aaaaaa;
+  --pink: #ff4fa3;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  transition: .3s;
+}
+
+body.light {
+  --bg: #f7f3f6;
+  --card: #ffffff;
+  --text: #171017;
+  --muted: #666;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(8,8,8,.85);
+  backdrop-filter: blur(15px);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.logo span { color: var(--pink); }
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover { color: var(--pink); }
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.theme {
+  background: var(--pink);
+  color: white;
+  padding: 10px 13px;
+  border-radius: 50%;
+}
+
+section {
+  padding: 110px 10%;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background:
+  radial-gradient(circle at 80% 40%, #64143e55, transparent 35%);
+}
+
+.hero h1 {
+  font-size: clamp(45px, 8vw, 85px);
+  line-height: 1.1;
+  margin: 20px 0;
+}
+
+.hero h1 span {
+  color: var(--pink);
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 500px;
+  line-height: 1.8;
+}
+
+.tag {
+  color: var(--pink);
+  letter-spacing: 4px;
+  font-size: 13px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 28px;
+  background: var(--pink);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: .3s;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 25px #ff4fa366;
+}
+
+.title {
+  font-size: 38px;
+  margin-bottom: 25px;
+}
+
+.title span { color: var(--pink); }
+
+.about p {
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 750px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-top: 35px;
+}
+
+.card {
+  background: var(--card);
+  padding: 30px;
+  border: 1px solid #ffffff12;
+  border-radius: 18px;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--pink);
+}
+
+.card h3 {
+  color: var(--pink);
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.skill {
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 7px;
+  background: var(--card);
+  border: 1px solid #ff4fa355;
+  border-radius: 25px;
+}
+
+.contact {
+  text-align: center;
+}
+
+.contact p {
+  color: var(--muted);
+  margin: 15px 0;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
+  border-top: 1px solid #ffffff15;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: .8s;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--pink);
+  color: white;
+  padding: 13px 17px;
+  border-radius: 50%;
+  display: none;
+}
+
+@media(max-width:700px) {
+  header { padding: 16px 5%; }
+  nav { gap: 12px; }
+  nav a { font-size: 11px; }
+  .logo { font-size: 20px; }
+  section { padding: 100px 7%; }
+  .title { font-size: 30px; }
+}
+</style>
 </head>
+
 <body>
 
-    <h1>Welcome to Arman's Website!</h1>
-    <p>This is my personal website.</p>
+<header>
+  <div class="logo">AR<span>MAN.</span></div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button class="theme" onclick="toggleTheme()">☀</button>
+</header>
+
+<section class="hero" id="home">
+  <div class="reveal">
+    <div class="tag">WELCOME TO MY WORLD</div>
+    <h1>Hello, I'm<br><span>Arman.</span></h1>
+    <p>
+      A curious mind, a creative soul.
+      Exploring technology, learning programming
+      and building my own digital world.
+    </p>
+    <a href="#about" class="btn">Discover More ↗</a>
+  </div>
+</section>
+
+<section class="about reveal" id="about">
+  <div class="tag">GET TO KNOW ME</div>
+  <h2 class="title">About <span>Me.</span></h2>
+  <p>
+    Hello! I'm Arman. Welcome to my personal space
+    on the internet. I love exploring new ideas,
+    learning new technologies and improving myself.
+    This website is a little reflection of my journey.
+  </p>
+</section>
+
+<section id="skills" class="reveal">
+  <div class="tag">WHAT I'M LEARNING</div>
+  <h2 class="title">My <span>Skills.</span></h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>HTML</h3>
+      <p>Building the structure of websites.</p>
+    </div>
+
+    <div class="card">
+      <h3>CSS</h3>
+      <p>Creating beautiful and responsive designs.</p>
+    </div>
+
+    <div class="card">
+      <h3>JavaScript</h3>
+      <p>Making websites interactive and dynamic.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="tag">MY TOOLKIT</div>
+  <h2 class="title">Currently <span>Exploring.</span></h2>
+  <div>
+    <span class="skill">HTML</span>
+    <span class="skill">CSS</span>
+    <span class="skill">JavaScript</span>
+    <span class="skill">GitHub</span>
+    <span class="skill">Web Design</span>
+  </div>
+</section>
+
+<section class="contact reveal" id="contact">
+  <div class="tag">LET'S CONNECT</div>
+  <h2 class="title">Get In <span>Touch.</span></h2>
+  <p>Have an idea? Let's create something amazing.</p>
+  <a href="mailto:your-email@example.com" class="btn">
+    Contact Me ↗
+  </a>
+</section>
+
+<footer>
+  © <span id="year"></span> ARMAN. All Rights Reserved.
+</footer>
+
+<button id="top" onclick="window.scrollTo(0,0)">↑</button>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("light");
+}
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".reveal").forEach(el => {
+  observer.observe(el);
+});
+
+window.addEventListener("scroll", () => {
+  document.getElementById("top").style.display =
+    window.scrollY > 300 ? "block" : "none";
+});
+</script>
 
 </body>
-</html>
+    </html>
